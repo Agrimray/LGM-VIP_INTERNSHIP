@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>ADD EMPLOYESS LGM TASK 3</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <style>
+        body{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color:rgb(89, 199, 39);">
+        <h2 class="text-center fw-bold" style="color:rgb(49, 39, 7); ">
+            LETSGROWMORE
+        </h2>
+        <h3 class="text-center">
+            Registration form
+        </h3>
+    </div>
+    <form  class="form" action="addEmpdata" method="post">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+            <div >
+    
+    <table class="table" style="background-color: azure;">
+        <tr align="center" class="bg-secondary"><td colspan=2 >FILL THE EMPLOYEE DETAILS</td></tr>
+        <tr><td>Employee Name</td><td>{{form.emp_name}}</td></tr><!--NO OF TR TD = NO OF FEILDS IN THE FORMS.PY-->
+        <tr><td>Employee Post</td><td>{{form.emp_post}}</td></tr>
+        <tr><td>Employee DOJ</td><td>{{form.emp_doj}}</td></tr>
+        <tr><td>Employee Contact</td><td>{{form.emp_contact}}</td></tr>
+        
+        <tr><td>Employee Salary</td><td>{{form.emp_salary}}</td></tr>
+        <tr><td><input class="btn btn-outline-success" type="submit" value="SUBMIT"></td>
+        <td> <input class="btn btn-outline-danger" type="reset" value="RESET"></td></tr>
+        
+   
+    </table>
+    </div>
+    </div>
+   
+    </form>
+    <div class="container">
+        <div class="col-md-12 text-center">
+            <a type="btn btn-warning" class="btn btn-primary" href="showEmp">SHOW AL</a>
+            <a type="btn btn-info" class="btn btn-warning" href="addEmp">ADDD NEW EMPLOYEE</a>
+        </div>
+    </div>
+    <!--{{data}}-->
+    <table class="table" style="background-color: azure;">
+        <tr align="center" style="background-color: rgb(85, 187, 37);"><td colspan=12 >SHOW THE EMPLOYEE DETAILS</td></tr>
+            <tr><th></th><th></th><th></th><th></th><th></th><th>ACTIONS</th></tr>
+            {% for record in data %}
+            <tr><td>{{record.emp_name}}</td><td>{{record.emp_post}}</td><td>{{record.emp_contact}}</td><td>{{record.emp_salary}}</td><td>{{record.emp_doj}}</td><td><a href="updateEmp/{{record.id}}"><i class="fas fa-user-edit"></i></a><a href="deleteEmp/{{record.id}}"><i class="fas fa-trash-alt"></i></a></td></tr>
+            {% endfor %}
+    </table>
+</body>
+</html>
