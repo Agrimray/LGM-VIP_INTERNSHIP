@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Page Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>body{
+        background-color: hsl(297, 46%, 74%);
+        text-align: center;
+    }
+    
+    h1,h2,h3,h4,h5,h6{
+        color:hsl(0, 0%, 30%);
+    }
+    
+    .box-element{
+        box-shadow:hsl(152, 89%, 35%) 0 0 16px;
+        background-color: #fff;
+        border-radius: 4px;
+        padding: 10px;
+    }
+    
+    .thumbnail{
+        width: 100%;
+        height: 250px;
+        -webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+        -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+        box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+    }
+    
+    .product{
+        border-radius: 0 0 4px 4px;
+    }
+    
+    .bg-dark{
+        background-color: #4f868c!important;
+    }
+    
+    #cart-icon{
+        width:25px;
+        display: inline-block;
+        margin-left: 15px;
+    }
+    
+    .col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
+        margin-top: 10px;
+    }
+    
+    .btn{
+        border-radius: 0;
+    }
+    
+    .row-image{
+        width: 25px;
+    }
+    
+    .form-field{
+        width:50px;
+        display: inline-block;
+        padding: 5px;
+    }
+    
+    .cart-row{
+        display: flex;
+        align-items: flex-stretch;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ececec;
+    
+    }
+    
+    .quantity{
+        display: inline-block;
+        font-weight: 700;
+        padding-right:10px;
+        
+    
+    }
+    
+    .chg-quantity{
+        width: 12px;
+        cursor: pointer;
+        display: block;
+        margin-top: 5px;
+        transition:.1s;
+    }
+    
+    .chg-quantity:hover{
+        opacity: .6;
+    }
+    
+    
+    .hidden{
+        display: none!important;
+    }
+    .left
+    {
+        text-align: right;
+    }
+    </style>
+</head>
+<body>
+
+    <div  style="background-color:#09351b" style="width:100px">
+        <h1>
+    <span style="color:rgb(219, 172, 18); float:left;">LETSGROWMORE</span>
+      <span style="color:rgb(230, 234, 235)">A simple web App</span>
+      <a class="btn btn-success pull-right" style="background-color:rgb(219, 172, 18);float: right; padding: 10px 10px 10px 10px; margin-right: 50px;" href="showEmp">REMOVE</a>
+
+      <a class="btn btn-success pull-right" style="background-color:rgb(219, 172, 18);float: right; padding: 10px 10px 10px 10px;margin-right: 50px;" href="home">GET ALL DATA</a>
+      
+    </h1>
+    </div>
+    <div class=container>
+    <strong>
+        {% csrf_token %}
+        <div class="row">
+        {% for i in response.data %}
+        <div class="col-lg-4">
+			<img class="thumbnail" src={{i.avatar}} width="50px">
+			<div class="box-element product">
+				<h6><strong>{{i.first_name}}{{i.last_name}}</strong></h6>
+                <a class="btn btn-outline-success" href="#">{{i.id}}</a>
+				<button data-product={{i.email}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">{{i.email}}</button>
+				
+				
+
+		  </div>
+		</div>
+        {% endfor %}
+    </div>
+</strong>
+</div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity=
+"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous">
+</script>
+
+<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity=
+"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous">
+</script>
+
+<script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity=
+"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous">
+</script>
+<footer class="page-footer font-small blue" style="background-color:#09351b;">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3 "style="color:white;">© 2022 Copyright:
+    <a href="https://letsgrowmore.in/" style="color:rgb(219, 172, 18)"> LETSGROWMORE</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+</body>
+</html>
